@@ -8,7 +8,7 @@ import retrofit2.adapter.rxjava2.Result;
 
 public class Category {
 
-    @SerializedName("success")
+    @SerializedName("category_id")
     private int categoryId;
 
     @SerializedName("name")

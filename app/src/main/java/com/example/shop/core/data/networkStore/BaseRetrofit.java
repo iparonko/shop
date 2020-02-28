@@ -11,7 +11,7 @@ public class BaseRetrofit {
     private static Retrofit retrofit;
     private static Gson gson;
 
-    private static final String BASE_URL = "http://yourdomain.com/api/rest_admin/";
+    private static final String BASE_URL = "http://5e590b7703a86a0014046bd5.mockapi.io/api/v1/";
 
     public static Retrofit getInstance() {
         initGson();

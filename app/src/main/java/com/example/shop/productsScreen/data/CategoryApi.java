@@ -1,18 +1,8 @@
 package com.example.shop.productsScreen.data;
 
-import android.os.AsyncTask;
-
 import com.example.shop.core.data.networkStore.BaseRetrofit;
 import com.example.shop.core.entity.Category;
 
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,7 +14,16 @@ public class CategoryApi {
     }
 
     public static void getCategories() {
-            init().getCategories()
-                    .subscribeOn(Schedulers.io());
+        init().getCategories().enqueue(new Callback<Category>() {
+            @Override
+            public void onResponse(Call<Category> call, Response<Category> response) {
+                System.out.println(1);
+            }
+
+            @Override
+            public void onFailure(Call<Category> call, Throwable t) {
+                System.out.println(2);
+            }
+        });
     }
 }
