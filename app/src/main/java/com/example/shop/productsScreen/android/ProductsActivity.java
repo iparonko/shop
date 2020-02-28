@@ -5,10 +5,11 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shop.Category;
-import com.example.shop.Product;
+import com.example.shop.core.entity.Category;
+import com.example.shop.core.entity.Product;
 import com.example.shop.R;
 import com.example.shop.core.android.BaseActivity;
+import com.example.shop.productsScreen.data.CategoryApi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class ProductsActivity extends BaseActivity {
 
         initRecycleView();
         initAdapter();
+        CategoryApi.getCategories();
     }
 
     @Override

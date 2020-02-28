@@ -1,4 +1,4 @@
-package com.example.shop;
+package com.example.shop.core.entity;
 
 public class Product {
     private String name;

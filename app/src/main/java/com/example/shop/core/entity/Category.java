@@ -1,9 +1,19 @@
-package com.example.shop;
+package com.example.shop.core.entity;
+
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import retrofit2.adapter.rxjava2.Result;
+
 public class Category {
+
+    @SerializedName("success")
+    private int categoryId;
+
+    @SerializedName("name")
     private String name;
+
     private List<Product> products;
 
     public Category(String name, List<Product> products) {
@@ -25,5 +35,13 @@ public class Category {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }
