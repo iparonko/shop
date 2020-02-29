@@ -1,11 +1,13 @@
 package com.example.shop.productsScreen.data;
 
 import com.example.shop.core.data.networkStore.BaseRetrofit;
-import com.example.shop.core.entity.Category;
+import com.example.shop.core.entity.TetPOJO;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import io.reactivex.Observer;
+import io.reactivex.SingleObserver;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
 
 public class CategoryApi {
     private static ProductsApi init() {
@@ -14,16 +16,29 @@ public class CategoryApi {
     }
 
     public static void getCategories() {
-        init().getCategories().enqueue(new Callback<Category>() {
-            @Override
-            public void onResponse(Call<Category> call, Response<Category> response) {
-                System.out.println(1);
-            }
+        init().getCategories()
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Observer<TetPOJO>() {
 
-            @Override
-            public void onFailure(Call<Category> call, Throwable t) {
-                System.out.println(2);
-            }
-        });
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        System.out.println(1);
+                    }
+
+                    @Override
+                    public void onNext(TetPOJO tetPOJO) {
+                        System.out.println(1);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.println(1);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        System.out.println(1);
+                    }
+                });
     }
 }
