@@ -1,12 +1,10 @@
 package com.example.shop.productsScreen.data;
 
 import com.example.shop.core.data.networkStore.BaseRetrofit;
-import com.example.shop.core.entity.TetPOJO;
+import com.example.shop.core.entity.Categories;
 
 import io.reactivex.Observer;
-import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class CategoryApi {
@@ -18,26 +16,26 @@ public class CategoryApi {
     public static void getCategories() {
         init().getCategories()
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<TetPOJO>() {
+                .subscribe(new Observer<Categories>() {
 
                     @Override
                     public void onSubscribe(Disposable d) {
-                        System.out.println(1);
+                        System.out.println("onSubscribe");
                     }
 
                     @Override
-                    public void onNext(TetPOJO tetPOJO) {
-                        System.out.println(1);
+                    public void onNext(Categories categories) {
+                        System.out.println("onNext");
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        System.out.println(1);
+                        System.out.println("onError");
                     }
 
                     @Override
                     public void onComplete() {
-                        System.out.println(1);
+                        System.out.println("onComplete");
                     }
                 });
     }
