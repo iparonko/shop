@@ -1,10 +1,11 @@
-package com.example.shop.core.entity;
+package com.example.shop.data.entity.dto;
 
-public class Product {
+public class ProductDTO {
+
     private String name;
     private int price;
 
-    public Product(String name, int price) {
+    public ProductDTO(String name, int price) {
         this.name = name;
         this.price = price;
     }
@@ -24,4 +25,5 @@ public class Product {
     public void setPrice(int price) {
         this.price = price;
     }
+
 }

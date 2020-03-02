@@ -1,7 +1,7 @@
 package com.example.shop.productsScreen.data;
 
-import com.example.shop.core.entity.Category;
-import com.example.shop.core.entity.Categories;
+import com.example.shop.data.entity.dto.CategoriesDTO;
+import com.example.shop.data.entity.dto.CategoryDTO;
 
 import java.util.List;
 
@@ -16,8 +16,8 @@ interface ProductsApi {
             "X-Oc-Restadmin-Id: 123"
     })
     @GET("categories")
-    Observable<Categories> getCategories();
+    Observable<CategoriesDTO> getCategories();
 
     @GET("products/category/{category_id}")
-    Observable<List<Category>> getProducts(@Path("category_id") int categoryId);
+    Observable<List<CategoryDTO>> getProducts(@Path("category_id") int categoryId);
 }

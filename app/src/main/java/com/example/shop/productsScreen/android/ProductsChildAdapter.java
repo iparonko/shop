@@ -8,17 +8,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shop.core.entity.Product;
+import com.example.shop.data.entity.dto.ProductDTO;
 import com.example.shop.R;
 
 import java.util.List;
 
 public class ProductsChildAdapter extends RecyclerView.Adapter<ProductsChildAdapter.ProductsChildHolder> {
 
-    private List<Product> products;
+    private List<ProductDTO> products;
     private Activity activity;
 
-    public ProductsChildAdapter(List<Product> products, Activity activity) {
+    public ProductsChildAdapter(List<ProductDTO> products, Activity activity) {
         this.products = products;
         this.activity = activity;
     }
@@ -32,7 +32,7 @@ public class ProductsChildAdapter extends RecyclerView.Adapter<ProductsChildAdap
 
     @Override
     public void onBindViewHolder(@NonNull ProductsChildAdapter.ProductsChildHolder holder, int position) {
-        Product product = products.get(position);
+        ProductDTO product = products.get(position);
         holder.bind(product);
     }
 
@@ -41,7 +41,7 @@ public class ProductsChildAdapter extends RecyclerView.Adapter<ProductsChildAdap
         return products.size();
     }
 
-    public List<Product> getProducts() {
+    public List<ProductDTO> getProducts() {
         return products;
     }
 
@@ -57,7 +57,7 @@ public class ProductsChildAdapter extends RecyclerView.Adapter<ProductsChildAdap
             textViewPrice = this.itemView.findViewById(R.id.textViewPrice);
         }
 
-        public void bind(Product product) {
+        public void bind(ProductDTO product) {
             textViewName.setText(product.getName());
             textViewPrice.setText(String.valueOf(product.getPrice()));
         }

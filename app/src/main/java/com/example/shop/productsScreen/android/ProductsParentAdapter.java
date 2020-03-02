@@ -9,18 +9,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shop.core.entity.Category;
 import com.example.shop.R;
+import com.example.shop.data.Data;
+import com.example.shop.data.entity.Category;
+import com.example.shop.data.entity.dto.ProductDTO;
+import com.example.shop.productsScreen.data.CategorySuccessMarker;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ProductsParentAdapter extends RecyclerView.Adapter<ProductsParentAdapter.ProductsParentHolder> {
+public class ProductsParentAdapter extends RecyclerView.Adapter<ProductsParentAdapter.ProductsParentHolder> implements CategorySuccessMarker {
 
-    private List<Category> categories;
+    private List<Category> categories = new ArrayList<>();
     private Activity activity;
 
-    ProductsParentAdapter(List<Category> categories, Activity activity) {
-        this.categories = categories;
+    ProductsParentAdapter(Activity activity) {
         this.activity = activity;
     }
 
@@ -42,8 +45,10 @@ public class ProductsParentAdapter extends RecyclerView.Adapter<ProductsParentAd
         return categories.size();
     }
 
-    List<Category> getCategories() {
-        return categories;
+    @Override
+    public void update() {
+        categories = Data.categories;
+        notifyDataSetChanged();
     }
 
     class ProductsParentHolder extends RecyclerView.ViewHolder {
@@ -68,7 +73,7 @@ public class ProductsParentAdapter extends RecyclerView.Adapter<ProductsParentAd
         }
 
         private void initAdapter(Category category) {
-            ProductsChildAdapter productsChildAdapter = new ProductsChildAdapter(category.getProducts(), activity);
+            ProductsChildAdapter productsChildAdapter = new ProductsChildAdapter(new ArrayList<ProductDTO>(), activity);
             recycleViewCategory.setAdapter(productsChildAdapter);
         }
     }
